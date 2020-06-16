@@ -1,2 +1,2 @@
-# junit5
+# JUnit5
 JUnit 5 
