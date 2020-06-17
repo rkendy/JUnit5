@@ -11,7 +11,7 @@ import org.junit.jupiter.api.condition.DisabledOnJre;
 import org.junit.jupiter.api.condition.JRE;
 
 @Disabled
-public class DisabledClassTest {
+public class DisabledClassDemoTest {
 
     @Test
     void testMethod1() {

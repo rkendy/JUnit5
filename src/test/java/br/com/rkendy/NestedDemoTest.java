@@ -13,7 +13,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-public class TestingAQueueDemo {
+public class NestedDemoTest {
     Queue<String> queue; // A Queue of String
 
     @Test

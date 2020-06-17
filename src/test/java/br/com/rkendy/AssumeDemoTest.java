@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assumptions.assumingThat;
 
 import org.junit.jupiter.api.Test;
 
-public class AssumeDemo {
+public class AssumeDemoTest {
     @Test
     void testOnDevelopmentEnvironment() {
         System.setProperty("ENV", "DEV");

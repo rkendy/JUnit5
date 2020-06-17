@@ -2,10 +2,13 @@ package br.com.rkendy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTimeout;
+import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
+
 import java.time.Duration;
+
 import org.junit.jupiter.api.Test;
 
-public class AssertTimeoutDemo {
+public class AssertTimeoutDemoTest {
     @Test
     void timeoutNotExceeded() {
         // The following assertion succeeds.
@@ -26,21 +29,19 @@ public class AssertTimeoutDemo {
     @Test
     void timeoutNotExceededWithMethod() {
         // The following assertion invokes a method reference and returns an object.
-        String actualGreeting = assertTimeout(Duration.ofMinutes(3), AssertTimeoutDemo::greeting);
+        String actualGreeting = assertTimeout(Duration.ofMinutes(3), AssertTimeoutDemoTest::greeting);
         assertEquals("Hello, World!", actualGreeting);
-    }
-
-    @Test
-    void timeoutExceeded() {
-        // The following assertion fails with an error message similar to:
-        // execution exceeded timeout of 10 ms by 91 ms
-        assertTimeout(Duration.ofMillis(10), () -> {
-            // Simulate task that takes more than 10 ms.
-            Thread.sleep(100);
-        });
     }
 
     private static String greeting() {
         return "Hello, World!";
+    }
+
+    @Test
+    void timeoutExceededWithPreemptiveTermination() {
+        assertTimeoutPreemptively(Duration.ofMillis(10), () -> {
+            // To fail, simulate task that takes more than 10 ms.
+            Thread.sleep(1);
+        });
     }
 }

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class AssertSameTest {
+class AssertSameDemoTest {
 	@Test
 	public void testAssertSameWithSameObject() {
 		String actual = "hello";

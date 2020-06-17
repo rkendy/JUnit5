@@ -6,13 +6,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class LifecycleTest {
+public class LifecycleDemoTest {
     @BeforeAll
     public static void beforeAll() {
         System.out.println("LifecycleTest - beforeAll() got executed !!!");
     }
 
-    public LifecycleTest() {
+    public LifecycleDemoTest() {
         System.out.println("LifecycleTest - Constructor got executed !!!");
     }
 

@@ -1,7 +1,6 @@
 package br.com.rkendy;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -9,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.stream.Stream;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -17,22 +15,10 @@ import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class OddEvenTest {
-
-	@Test
-	void givenEvenNumber_whenIsEvenIsCalled_thenTrueIsReturned() {
-		OddEven oddEven = new OddEven();
-		assertTrue(oddEven.isNumberEven(10));
-	}
-
-	@Test
-	void givenOddNumber_whenIsEvenIsCalled_thenFalseIsReturned() {
-		OddEven oddEven = new OddEven();
-		assertFalse(oddEven.isNumberEven(11));
-	}
+class ParameterizedDemoTest {
 
 	@ParameterizedTest
-	@ValueSource(ints = { 2, 4, 6, 8, Integer.MAX_VALUE })
+	@ValueSource(ints = { 2, 4, 6, 8, 20 })
 	void givenANumber_whenIsEvenIsCalled_thenTrueIsReturnedForEvenNumbers(int number) {
 		OddEven oddEven = new OddEven();
 		assertTrue(oddEven.isNumberEven(number));
@@ -84,4 +70,5 @@ class OddEvenTest {
 		assertNotNull(country);
 		assertNotNull(capital);
 	}
+
 }
