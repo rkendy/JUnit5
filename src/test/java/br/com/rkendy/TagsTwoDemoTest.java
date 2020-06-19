@@ -11,6 +11,9 @@ import org.junit.jupiter.api.Test;
  * 
  * Run Tests with Tags:
  * $ mvn test -Dgroups="TagOne,TagTwo"
+ * 
+ * * To exclude tag:
+ * $ mvn test -DexcludedGroups="TagTwo"
  */
 
 @Tag("TagTwo")
