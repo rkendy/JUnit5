@@ -30,7 +30,10 @@ public class ClassToBeTested {
     }
 
     public int methodUsingStaticValues() {
-        STATIC_CLASS.add(Integer.toString(STATIC_VALUE));
-        return 0;
+        int toAdd = 5;
+        if (STATIC_CLASS.add(Integer.toString(STATIC_VALUE))) {
+            toAdd = 10;
+        }
+        return STATIC_VALUE + toAdd + STATIC_CLASS.size();
     }
 }

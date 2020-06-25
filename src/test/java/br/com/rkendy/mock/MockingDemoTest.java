@@ -2,7 +2,13 @@ package br.com.rkendy.mock;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -10,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.powermock.reflect.Whitebox;
 
 @ExtendWith(MockitoExtension.class)
 public class MockingDemoTest {
@@ -70,7 +77,47 @@ public class MockingDemoTest {
     // ************************************************************
     // *********** Not possible to Mock:
     // ************************************************************
-    void given_when_then() {
 
+    @Mock
+    private List<String> list;
+
+    @Test
+    void given_when_then() {
+        // Should place this in @BeforeEach:
+        MockitoAnnotations.initMocks(this);
+
+        // Arrange:
+        int value = 10;
+        int size = 33;
+        Whitebox.setInternalState(ClassToBeTested.class, "STATIC_VALUE", 10);
+        Whitebox.setInternalState(ClassToBeTested.class, "STATIC_CLASS", list);
+        Mockito.when(list.add(any(String.class))).thenReturn(true);
+        Mockito.when(list.size()).thenReturn(size);
+
+        // Act:
+        int result = classToTest.methodUsingStaticValues();
+
+        // Assert:
+        assertEquals(value + 10 + size, result);
+    }
+
+    // @Test
+    void given_when_then2() {
+        // Should place this in @BeforeEach:
+        MockitoAnnotations.initMocks(this);
+
+        // Arrange:
+        int value = 10;
+        int size = 21;
+        Whitebox.setInternalState(ClassToBeTested.class, "STATIC_VALUE", value);
+        Whitebox.setInternalState(ClassToBeTested.class, "STATIC_CLASS", list);
+        Mockito.when(list.add(any(String.class))).thenReturn(false);
+        Mockito.when(list.size()).thenReturn(size);
+
+        // Act:
+        int result = classToTest.methodUsingStaticValues();
+
+        // Assert:
+        assertEquals(value + 5 + size, result);
     }
 }
