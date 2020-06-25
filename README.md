@@ -6,11 +6,13 @@ JUnit 5
 
 $ mvn test
 $ mvn -Dtest=ClassName#methodName test
+\$ mvn test jacoco:report
 
 ## Gradle
 
 $ gradle clean test
 $ gradle test --tests Assert\*
+\$ gradle jacocoTestReport
 
 ## Mockito:
 
