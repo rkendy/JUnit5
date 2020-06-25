@@ -82,7 +82,7 @@ public class MockingDemoTest {
     private List<String> list;
 
     @Test
-    void given_when_then() {
+    void givenStaticValue10_whenMethodUsingStaticValue_thenReturnCorrectValue() {
         // Should place this in @BeforeEach:
         MockitoAnnotations.initMocks(this);
 
@@ -102,12 +102,12 @@ public class MockingDemoTest {
     }
 
     // @Test
-    void given_when_then2() {
+    void givenStaticValue50_whenMethodUsingStaticValue_thenReturnCorrectValue() {
         // Should place this in @BeforeEach:
         MockitoAnnotations.initMocks(this);
 
         // Arrange:
-        int value = 10;
+        int value = 50;
         int size = 21;
         Whitebox.setInternalState(ClassToBeTested.class, "STATIC_VALUE", value);
         Whitebox.setInternalState(ClassToBeTested.class, "STATIC_CLASS", list);
