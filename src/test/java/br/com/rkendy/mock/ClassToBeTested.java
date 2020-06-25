@@ -1,10 +1,36 @@
 package br.com.rkendy.mock;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ClassToBeTested {
-    private ClassToBeMocked someField;
+
+    private static final int STATIC_VALUE;
+    private static final List<String> STATIC_CLASS;
+
+    static {
+        STATIC_VALUE = 10;
+        STATIC_CLASS = new ArrayList<>();
+    }
+    private ClassToBeMocked externalService;
+
+    public int multiplyByFourOrFive(int x) {
+        if (x <= 10) {
+            return x * 4;
+        }
+        return x * 5;
+    }
 
     public int multiplyByTwoAndAddTen(int x) {
-        int y = someField.multiplyByTwo(x);
+        if (x == 0)
+            throw new IllegalArgumentException("Cannot be zero");
+
+        int y = externalService.multiplyByTwo(x);
         return y + 10;
+    }
+
+    public int methodUsingStaticValues() {
+        STATIC_CLASS.add(Integer.toString(STATIC_VALUE));
+        return 0;
     }
 }
