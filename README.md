@@ -9,7 +9,7 @@ $ mvn -Dtest=ClassName#methodName test
 
 ## Gradle
 
-$ gradle test
+$ gradle clean test
 $ gradle test --tests Assert\*
 
 ## Mockito:
